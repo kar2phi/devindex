@@ -1,0 +1,78 @@
+name: "Tool fix · improve a specific tool entry"
+description: Something is wrong or stale about a tool already in the landscape — name, link, description, pricing, OSS flag, GitHub URL, category, or rank.
+title: "Tool fix: "
+labels: ["feedback", "tool-fix"]
+body:
+  - type: input
+    id: tool_id
+    attributes:
+      label: Tool ID
+      description: Stable identifier from the landscape. Prefilled when you click "Report a problem" from the tool drawer — please don't edit.
+      placeholder: e.g. mem0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_kind
+    attributes:
+      label: What is wrong?
+      description: Pick the closest match. The triage bot uses this to route the fix to the right column(s) of `data/tool_landscape_live.csv` or, for taxonomy changes, `data/tool_categories.csv`.
+      options:
+        - wrong-name
+        - wrong-link
+        - wrong-description
+        - wrong-pricing
+        - wrong-license-or-oss-flag
+        - wrong-category
+        - wrong-rank-or-scoring
+        - should-be-removed
+        - duplicate-of-another-entry
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_value
+    attributes:
+      label: Current value or snapshot
+      description: Optional. What the site currently shows for the affected field. Prefilled from the tool drawer when available.
+      placeholder: 'e.g. "pricing: freemium" or "rank: 4 in Coding Agents"'
+
+  - type: textarea
+    id: suggested_value
+    attributes:
+      label: Requested change
+      description: What should change? Include the corrected value, removal reason, duplicate target, category move, or ranking concern.
+      placeholder: e.g. "Pricing should be paid only; the free tier was removed in 2026-Q1."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Optional. Link to docs, pricing page, changelog, blog post, or anything else that backs the change.
+      placeholder: https://…
+
+  - type: textarea
+    id: metadata_block
+    attributes:
+      label: Machine-readable context
+      description: |
+        Optional. Prefilled by devindex.ai for reports opened from the site.
+        If this block is present, please leave it unchanged.
+      render: yaml
+      placeholder: |
+        # devindex-feedback
+        schema_version: 1
+        template: tool-fix
+        tool_id: mem0
+        category_id: agent-memory
+        subcategory_id: long-term-memory
+        page_url: https://devindex.ai/tools/mem0
+        dataset_version: 2026-05-14
+        displayed_rank: 1
+        displayed_rank_in_subcategory: 1
+        displayed_score: 87
+    validations:
+      required: false

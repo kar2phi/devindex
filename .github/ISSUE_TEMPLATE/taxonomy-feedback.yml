@@ -1,0 +1,80 @@
+name: "Taxonomy feedback · category structure or placement"
+description: A tool is in the wrong category, a category feels over- or under-partitioned, a new category is missing, or a description doesn't match its tools.
+title: "Taxonomy feedback: "
+labels: ["feedback", "taxonomy"]
+body:
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - miscategorised-tool
+        - category-split
+        - category-merge
+        - new-category
+        - category-description
+        - subcategory-issue
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: category_id
+    attributes:
+      label: Category ID
+      description: The category slug this report is about, if applicable. Prefilled when you arrive from a category surface.
+      placeholder: e.g. agent-memory
+
+  - type: input
+    id: subcategory_id
+    attributes:
+      label: Subcategory ID
+      description: Optional. Subcategory slug, if the issue is at that level.
+      placeholder: e.g. long-term-memory
+
+  - type: input
+    id: tool_id
+    attributes:
+      label: Tool ID
+      description: Required only for `miscategorised-tool`. Otherwise leave blank.
+      placeholder: e.g. mem0
+
+  - type: textarea
+    id: current_state
+    attributes:
+      label: Current placement or wording
+      description: Optional. What does the index currently show?
+      placeholder: e.g. "mem0 is listed under Agent Skills & MCP / MCP Servers."
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Proposed change
+      description: What taxonomy change should be made?
+      placeholder: e.g. "Move mem0 to Agent Memory / Long-term Memory."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason or evidence
+      description: Why is this category, subcategory, split, merge, or wording a better fit?
+      placeholder: Link to docs, product positioning, comparable tools, or a concise rationale.
+    validations:
+      required: true
+
+  - type: textarea
+    id: metadata_block
+    attributes:
+      label: Machine-readable context
+      description: Optional. Prefilled by devindex.ai when available. If present, please leave it unchanged.
+      render: yaml
+      placeholder: |
+        # devindex-feedback
+        schema_version: 1
+        template: taxonomy-feedback
+        page_url: https://devindex.ai/categories/agent-memory
+        dataset_version: 2026-05-14
+    validations:
+      required: false

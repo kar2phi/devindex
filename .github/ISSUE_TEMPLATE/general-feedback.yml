@@ -1,0 +1,49 @@
+name: "General feedback · bug, idea, missing tool, methodology question"
+description: UI bug, design suggestion, scoring methodology question, missing-tool suggestion, or general commentary.
+title: "Feedback: "
+labels: ["feedback", "general"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - bug
+        - feature-idea
+        - suggest-new-tool
+        - scoring-methodology-question
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: affected_url
+    attributes:
+      label: Affected page URL
+      description: Optional. Page where this happened. Prefilled from the site when available.
+      placeholder: https://devindex.ai/...
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Details
+      description: |
+        For `suggest-new-tool`, please include the project URL, a one-line
+        description, and which category/subcategory you think it fits.
+    validations:
+      required: true
+
+  - type: textarea
+    id: metadata_block
+    attributes:
+      label: Machine-readable context
+      description: Optional. Prefilled by devindex.ai when available. If present, please leave it unchanged.
+      render: yaml
+      placeholder: |
+        # devindex-feedback
+        schema_version: 1
+        template: general-feedback
+        page_url: https://devindex.ai/tools/
+        dataset_version: 2026-05-14
+    validations:
+      required: false

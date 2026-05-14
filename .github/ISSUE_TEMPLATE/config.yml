@@ -1,0 +1,8 @@
+# Soft launch — keep blank issues enabled until the three templates have
+# soaked for ~30 days. Flip to false later if usage shows the templates
+# cover >90% of incoming reports.
+blank_issues_enabled: true
+contact_links:
+  - name: Dev Index AI — landscape site
+    url: https://devindex.ai
+    about: Browse the curated tool index. Click any tool to open its drawer; the "Report a problem" link there prefills a structured issue.
