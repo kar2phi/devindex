@@ -30,7 +30,7 @@
 
 ## What is it about?
 
-**devindex.ai** is an index of AI dev tools sorted into categories, mixing public signals with editorial judgment on what's worth a closer look. Numbers are signals, not the final word. The project is still in beta.
+**devindex.ai** is an index of AI dev tools sorted into categories, mixing public signals with editorial judgment on what's worth a closer look. Numbers are signals, not the final word.
 
 What it's good for:
 
